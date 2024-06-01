@@ -13,15 +13,17 @@
     <main>
         <section id="controls">
             <label for="slices">Number of slices:</label>
-            <input type="number" id="slices" min="1" value="4">
+            <input type="number" name ="slices" id="slices" min="1" value="4">
             <button onclick="drawPie()">Slice</button>
+            <button onclick="showNextSlice()">Next Slice</button>
         </section>
         <section id="canvas-container">
             <canvas id="pieCanvas" width="500" height="500"></canvas>
+            <canvas id="pieStepsCanvas" width="500" height="500"></canvas>
         </section>
     </main>
     <footer>
-        <p>Developed by [Your Name]</p>
+        <p>Developed by ygeorgaras</p>
     </footer>
     <script src="script.js"></script>
 </body>

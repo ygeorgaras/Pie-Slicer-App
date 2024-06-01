@@ -1,27 +1,85 @@
+const fullCanvas = document.getElementById('pieCanvas');
+const stepsCanvas = document.getElementById('pieStepsCanvas');
+const radius = fullCanvas.width / 2;
+const centerX = fullCanvas.width / 2;
+const centerY = fullCanvas.height / 2;
+
+slices = document.getElementById('slices').value;
+currSlice = 0;
+
+function populateCanvas(){
+    slices = 0;
+    drawPie();
+}
+
+// Initialization function that runs when the document is fully loaded
+function initialize() {
+    resetCanvas(fullCanvas);
+    resetCanvas(stepsCanvas);
+}
+
+// Draw the fully sliced pie in the fullCanvas
 function drawPie() {
-    const canvas = document.getElementById('pieCanvas');
-    const ctx = canvas.getContext('2d');
-    const slices = document.getElementById('slices').value;
-    const radius = canvas.width / 2;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    const ctx = resetCanvas(fullCanvas);
+    slices = document.getElementById('slices').value;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-    ctx.stroke();
-    
     for (let i = 0; i < slices; i++) {
-        const angle = (i * 2 * Math.PI) / slices;
-        const x = centerX + radius * Math.cos(angle);
-        const y = centerY + radius * Math.sin(angle);
+        angle = (i * 2 * Math.PI) / slices;
+        x = centerX + radius * Math.cos(angle);
+        y = centerY + radius * Math.sin(angle);
 
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.lineTo(x, y);
         ctx.stroke();
     }
-
-
 }
+
+function showNextSlice(){
+    const ctx = stepsCanvas.getContext('2d');
+    slices = document.getElementById('slices').value;
+
+    angle = (currSlice * 2 * Math.PI) / slices;
+    x = centerX + radius * Math.cos(angle);
+    y = centerY + radius * Math.sin(angle);
+
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    //If slices are even then we want to slice the pie fully.
+    if(slices % 2 == 0){
+        evenSlice = (slices / 2) + currSlice;
+        angle = (evenSlice * 2 * Math.PI) / slices;
+        x = centerX + radius * Math.cos(angle);
+        y = centerY + radius * Math.sin(angle);
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    }
+    currSlice++;
+}
+
+function resetCanvas(canvas){
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.stroke();
+    return ctx;
+}
+
+function updateSlices(){
+    currSlice = 0;
+    slices = document.getElementById('slices').value;
+    resetCanvas(fullCanvas);
+    resetCanvas(stepsCanvas);
+}
+
+// Event listener for DOMContentLoaded to run the initialize function
+document.addEventListener('DOMContentLoaded', initialize);
+document.getElementsByName("slices")[0].addEventListener('input', updateSlices);
+
+
