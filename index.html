@@ -14,9 +14,8 @@
     <main>
         <section id="controls">
             <label for="slices">Number of slices:</label>
-            <input type="number" name ="slices" id="slices" min="1" value="4">
-            <button onclick="drawPie()">Slice</button>
-            <button onclick="showNextSlice()">Next Slice</button>
+            <input type="text" name ="slices" id="slices" min="2" max="24" value="4">
+            <button onclick="showNextSlice()" name="sliceButton" id="sliceButton">Next Slice</button>
         </section>
         <section id="canvas-container">
             <canvas id="pieCanvas" width="500" height="500"></canvas>
