@@ -80,8 +80,13 @@ function updateSlices(){
 // Ensures input is a valid int and sets boundaries.
 function validateSlicesInput(){
     let val = document.getElementById('slices').value.replace(/\D/g,'');
+    sliceButton.disabled = false;
     document.getElementById('slices').value = val;
-    if(val == "" || val < minSlice){
+    if(val == ""){
+        document.getElementById('slices').value = "";
+        sliceButton.disabled = true;
+    }
+    else if(val < minSlice){
         document.getElementById('slices').value = minSlice;
     }
     else if(val > maxSlice){
@@ -89,7 +94,6 @@ function validateSlicesInput(){
     }
     slices = document.getElementById('slices').value;
     currSlice = 0;
-    sliceButton.disabled = false;
 }
 
 // Event listeners
