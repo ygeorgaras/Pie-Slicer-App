@@ -78,7 +78,7 @@ function showNextSlice(){
 function resetCanvas(canvas){
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.setLineDash([0,0]);
+    ctx.setLineDash([]);
     ctx.beginPath();
     ctx.strokeStyle = "black";
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
