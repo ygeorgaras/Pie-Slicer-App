@@ -22,13 +22,21 @@ function initialize() {
 }
 
 // Calculation for slicing each piece of pie.
-function slicePie(ctx, sliceNumber){
+function slicePie(ctx, sliceNumber, dashedLine){
     angle = (sliceNumber * 2 * Math.PI) / slices;
     x = centerX + radius * Math.cos(angle);
     y = centerY + radius * Math.sin(angle);
 
     ctx.strokeStyle = "black"; // Use to change stroke style
     ctx.beginPath();
+    //Adds dashed line for next slice
+    if(dashedLine == true){
+        ctx.setLineDash([10,20]);
+        ctx.lineWidth = 1;
+    }else{
+        ctx.setLineDash([0,0]);
+        ctx.lineWidth = 2;
+    }
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(x, y);
     ctx.stroke();
@@ -39,30 +47,38 @@ function drawPie() {
     const ctx = fullCanvas.getContext('2d');
 
     for (let i = 0; i < slices; i++) {
-        slicePie(ctx, i);
+        slicePie(ctx, i, false);
     }
 }
 
 // Draws each slice of pie one piece at a time.
 function showNextSlice(){
+    if(currSlice == slices || (slices % 2 == 0 && currSlice * 2 == slices)){
+        sliceButton.disabled = true;
+    }
     const ctx = stepsCanvas.getContext('2d');
-    slicePie(ctx, currSlice);
+
+    //Slice the pie once.
+    slicePie(ctx, currSlice, true);
+    if(currSlice > 0)
+        slicePie(ctx, currSlice - 1, false);
 
     //If slices are even then we want to slice the pie fully.
     if(slices % 2 == 0){
         evenSlice = (slices / 2) + currSlice;
-        slicePie(ctx, evenSlice);
+        slicePie(ctx, evenSlice, true);
+        if(currSlice > 0)
+            slicePie(ctx, evenSlice - 1, false);
     }
+
     currSlice++;
-    if(currSlice == slices || (slices % 2 == 0 && currSlice * 2 == slices)){
-        sliceButton.disabled = true;
-    }
 }
 
 // Redraws both canvas.
 function resetCanvas(canvas){
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.setLineDash([0,0]);
     ctx.beginPath();
     ctx.strokeStyle = "black";
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
