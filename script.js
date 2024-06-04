@@ -34,7 +34,7 @@ function slicePie(ctx, sliceNumber, dashedLine){
         ctx.setLineDash([10,20]);
         ctx.lineWidth = 1;
     }else{
-        ctx.setLineDash([0,0]);
+        ctx.setLineDash([]);
         ctx.lineWidth = 2;
     }
     ctx.moveTo(centerX, centerY);
