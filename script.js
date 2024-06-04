@@ -27,6 +27,7 @@ function slicePie(ctx, sliceNumber){
     x = centerX + radius * Math.cos(angle);
     y = centerY + radius * Math.sin(angle);
 
+    ctx.strokeStyle = "black"; // Use to change stroke style
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(x, y);
@@ -63,6 +64,7 @@ function resetCanvas(canvas){
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.beginPath();
+    ctx.strokeStyle = "black";
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.stroke();
     return ctx;
