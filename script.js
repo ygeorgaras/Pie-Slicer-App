@@ -1,8 +1,10 @@
 const fullCanvas = document.getElementById('pieCanvas');
 const stepsCanvas = document.getElementById('pieStepsCanvas');
-const radius = fullCanvas.width / 2;
-const centerX = fullCanvas.width / 2;
-const centerY = fullCanvas.height / 2;
+const MAX_WIDTH = 400; // New canvas size
+const MAX_HEIGHT = 400; // New canvas size
+const radius = MAX_WIDTH / 2;
+const centerX = MAX_WIDTH / 2;
+const centerY =  MAX_WIDTH / 2;
 const minSlice = 2;
 const maxSlice = 24;
 sliceButton = document.getElementById('sliceButton');
@@ -18,6 +20,10 @@ function populateCanvas(){
 
 // Initialization function that runs when the document is fully loaded.
 function initialize() {
+    fullCanvas.width = MAX_WIDTH;
+    stepsCanvas.width = MAX_WIDTH;
+    fullCanvas.height = MAX_HEIGHT;
+    stepsCanvas.height = MAX_HEIGHT;
     updateSlices();
 }
 
@@ -29,7 +35,7 @@ function slicePie(ctx, sliceNumber, dashedLine){
 
     ctx.strokeStyle = "black"; // Use to change stroke style
     ctx.beginPath();
-    //Adds dashed line for next slice
+    // Adds dashed line for next slice
     if(dashedLine == true){
         ctx.setLineDash([10,20]);
         ctx.lineWidth = 1;
@@ -58,12 +64,12 @@ function showNextSlice(){
     }
     const ctx = stepsCanvas.getContext('2d');
 
-    //Slice the pie once.
+    // Slice the pie once.
     slicePie(ctx, currSlice, true);
     if(currSlice > 0)
         slicePie(ctx, currSlice - 1, false);
 
-    //If slices are even then we want to slice the pie fully.
+    // If slices are even then we want to slice the pie fully.
     if(slices % 2 == 0){
         evenSlice = (slices / 2) + currSlice;
         slicePie(ctx, evenSlice, true);
@@ -77,7 +83,7 @@ function showNextSlice(){
 // Redraws both canvas.
 function resetCanvas(canvas){
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, MAX_WIDTH, MAX_WIDTH);
     ctx.setLineDash([]);
     ctx.beginPath();
     ctx.strokeStyle = "black";

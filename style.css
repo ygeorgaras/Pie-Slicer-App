@@ -4,8 +4,8 @@ body {
 }
 
 header, footer {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: black;
 }
 
@@ -15,29 +15,30 @@ header .border {
     border-radius: 100px; 
 }
 
-label{
+label {
     color: black;
 }
 
 main {
     text-align: center;
-    border: 40px;
-    border-color: black;
 }
 
 canvas {
     border: 3px solid #000;
-    margin-top: 50px;
-    width: 35%;
-    height: 35%;
+    width: 40%; /* Reduce size */
+    height: 40%; /* Reduce size */
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center; /* Centers the canvas horizontally */
+    align-items: center; /* Centers the canvas vertically */
+    flex-wrap: wrap;
+    width: 90%; /* Adjust width to fit smaller screens */
 }
 
 #controls {
     margin-bottom: 5%;  
-}
-
-#canvas-container {
-    margin-left: 10px;
 }
 
 .disable-dbl-tap-zoom {
