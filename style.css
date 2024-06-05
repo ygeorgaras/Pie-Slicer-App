@@ -1,40 +1,38 @@
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
     font-family: Arial, sans-serif;
     background: url('assets/Background.png') repeat;
 }
 
 header, footer {
-    margin-top: 10px;
-    margin-bottom: 10px;
     color: black;
-}
-
-header .border {
-    border: 40px;
-    border-color: black;
-    border-radius: 100px; 
-}
-
-label {
-    color: black;
+    padding: 10px 0;
 }
 
 main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 canvas {
     border: 3px solid #000;
-    width: 40%; /* Reduce size */
-    height: 40%; /* Reduce size */
 }
 
 .canvas-container {
     display: flex;
-    justify-content: center; /* Centers the canvas horizontally */
-    align-items: center; /* Centers the canvas vertically */
-    flex-wrap: wrap;
-    width: 90%; /* Adjust width to fit smaller screens */
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: nowrap;
+    width: 90%;
+    max-width: 800px; /* Added to limit the maximum width */
+    margin: 0 auto; /* Added to center the container itself */
 }
 
 #controls {
@@ -43,4 +41,18 @@ canvas {
 
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    .canvas-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #pieCanvas, #pieStepsCanvas {
+        width: auto;
+        max-width: 200px;
+        height: auto;
+        margin: 5px;
+    }
 }

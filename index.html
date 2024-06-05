@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Pie Slicer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="shortcut icon" href="#">
 </head>
-<body class="d-flex flex-column align-items-center justify-content-center vh-100 text-white">
-    <header class="text-center mb-2 fixed-top">
+<body>
+    <header class="text-center mb-2">
         <div>
-            <img src="assets/Header_Banner.png" alt="Slice-Inator" style="width: 30%; height: 30%;"> <!-- Adjust size -->
+            <img src="assets/Header_Banner.png" alt="Slice-Inator" style="width: 30%; height: 30%;">
         </div>
     </header>
     <main class="text-center">
-        <section id="canvas-container" class="d-flex justify-content-center flex-wrap">
-            <canvas id="pieCanvas" class="mb-2 mr-1" ></canvas> <!-- Adjust size -->
-            <canvas id="pieStepsCanvas" class="mb-2 ml-1" ></canvas> <!-- Adjust size -->
+        <section id="canvas-container" class="canvas-container">
+            <canvas id="pieCanvas" class="mb-2 mr-1"></canvas>
+            <canvas id="pieStepsCanvas" class="mb-2 ml-1"></canvas>
         </section>
         <section id="controls" class="mb-2">
             <div class="form-group row justify-content-center">
@@ -31,7 +31,7 @@
             </div>
         </section>
     </main>
-    <footer class="text-center mt-2 fixed-bottom">
+    <footer class="text-center mt-2 mb-2 fixed-bottom">
         <p>Developed by ygeorgaras</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
