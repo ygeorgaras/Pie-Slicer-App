@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Pie Slicer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="assets/Slice.png">
 </head>
 <body>
     <header class="text-center mb-2">
@@ -21,22 +21,21 @@
         </section>
         <section id="controls" class="mb-2">
             <div class="form-group row justify-content-center">
-                <label for="slices" class="col-auto col-form-label">Number of slices:</label>
-                <div class="col-auto">
+                <label for="slices" class="col-auto col-form-label mb-2">Number of slices:</label>
+                <div class="col-auto mb-2">
                     <input type="number" class="form-control" name="slices" id="slices" min="2" max="24" value="4">
                 </div>
-                <div class="col-auto">
+                <div class="col-auto mb-2">
                     <button class="btn btn-dark disable-dbl-tap-zoom" onclick="showNextSlice()" name="sliceButton" id="sliceButton">Next Slice</button>
                 </div>
             </div>
         </section>
     </main>
-    <footer class="text-center mt-2 mb-2 fixed-bottom">
-        <p>Developed by ygeorgaras</p>
+    <footer class="text-center mt-2">
+        <div>
+            <a href="https://github.com/ygeorgaras" target="_blank">Developed by ygeorgaras</a>
+        </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
